@@ -11,7 +11,7 @@ node dist/src/cli.js --demo    # try it
 node dist/src/cli.js           # run against your own logs
 ```
 
-No runtime dependencies, please. `npx agentreceipt` should stay instant.
+No runtime dependencies, please. `npx tokenreceipt` should stay instant.
 
 ## Adding an agent
 
@@ -30,4 +30,4 @@ Claude prices live in `src/pricing.ts` (`CLAUDE_PRICES`). Other models come from
 
 ## Reporting wrong numbers
 
-Run `npx agentreceipt --json --redact` and include the per-model totals, your agent version, and what you expected (e.g. Claude Code's `/cost`). Please don't paste raw logs: they contain your code and prompts.
+Run `npx tokenreceipt --json --redact` and include the per-model totals, your agent version, and what you expected (e.g. Claude Code's `/cost`). Please don't paste raw logs: they contain your code and prompts.

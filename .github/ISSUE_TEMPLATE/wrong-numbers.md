@@ -6,7 +6,7 @@ labels: accuracy
 
 **Agent and version:** (e.g. Claude Code 2.1.310)
 
-**agentreceipt output:** `npx agentreceipt --by model --redact`
+**tokenreceipt output:** `npx tokenreceipt --by model --redact`
 
 **What you expected and where it comes from:** (e.g. Claude Code `/cost`, provider billing page)
 

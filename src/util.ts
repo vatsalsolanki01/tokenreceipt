@@ -68,8 +68,8 @@ export function plausibleTime(ts: number): boolean {
 
 /** A locked, deleted or unreadable log file shouldn't abort the whole report. */
 export function skipFile(file: string, err: unknown): void {
-  if (process.env.AGENTRECEIPT_DEBUG) {
-    process.stderr.write(`agentreceipt: skipped ${file}: ${err instanceof Error ? err.message : String(err)}
+  if (process.env.TOKENRECEIPT_DEBUG) {
+    process.stderr.write(`tokenreceipt: skipped ${file}: ${err instanceof Error ? err.message : String(err)}
 `);
   }
 }

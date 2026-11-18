@@ -16,10 +16,10 @@ import type { UsageRecord } from "./types.js";
 
 const VERSION = "0.1.0";
 
-const HELP = `agentreceipt: see what your AI coding agents really cost. 100% local.
+const HELP = `tokenreceipt: see what your AI coding agents really cost. 100% local.
 
 Usage
-  npx agentreceipt [options]
+  npx tokenreceipt [options]
 
 Options
   --days <n>          only the last n days (today included)
@@ -38,9 +38,9 @@ Options
   -h, --help
 
 Examples
-  npx agentreceipt --days 7
-  npx agentreceipt --since 2026-10-01 --by project
-  npx agentreceipt --html --redact
+  npx tokenreceipt --days 7
+  npx tokenreceipt --since 2026-10-01 --by project
+  npx tokenreceipt --html --redact
 
 Reads
   Claude Code  ~/.claude/projects, ~/.config/claude/projects, $CLAUDE_CONFIG_DIR
@@ -105,8 +105,8 @@ async function main(): Promise<void> {
   if (!records.length) {
     process.stdout.write(
       "\n  No agent usage found for this selection.\n\n" +
-        "  agentreceipt reads logs from Claude Code (~/.claude/projects), Codex CLI (~/.codex/sessions)\n" +
-        "  and Gemini CLI (~/.gemini/tmp). Use an agent first, widen the dates, or try:  npx agentreceipt --demo\n\n",
+        "  tokenreceipt reads logs from Claude Code (~/.claude/projects), Codex CLI (~/.codex/sessions)\n" +
+        "  and Gemini CLI (~/.gemini/tmp). Use an agent first, widen the dates, or try:  npx tokenreceipt --demo\n\n",
     );
     return;
   }
@@ -120,11 +120,11 @@ async function main(): Promise<void> {
   });
 
   if (opts.html) {
-    const file = path.resolve(opts.htmlPath ?? path.join(os.tmpdir(), "agentreceipt", "agentreceipt-report.html"));
+    const file = path.resolve(opts.htmlPath ?? path.join(os.tmpdir(), "tokenreceipt", "tokenreceipt-report.html"));
     await fs.mkdir(path.dirname(file), { recursive: true });
     await fs.writeFile(file, renderHtml(report));
     if (opts.json) {
-      process.stderr.write(`agentreceipt: dashboard written to ${file}\n`);
+      process.stderr.write(`tokenreceipt: dashboard written to ${file}\n`);
     } else {
       process.stdout.write(renderSummary(report));
       process.stdout.write(`  Dashboard: ${file}\n\n`);
@@ -138,6 +138,6 @@ async function main(): Promise<void> {
 }
 
 main().catch((err: unknown) => {
-  process.stderr.write(`agentreceipt: ${err instanceof Error ? err.message : String(err)}\n`);
+  process.stderr.write(`tokenreceipt: ${err instanceof Error ? err.message : String(err)}\n`);
   process.exit(1);
 });

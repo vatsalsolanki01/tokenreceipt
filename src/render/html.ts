@@ -9,7 +9,7 @@ export function renderHtml(report: Report): string {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>agentreceipt · AI agent spend</title>
+<title>tokenreceipt · AI agent spend</title>
 <style>
 .viz-root {
   color-scheme: light;
@@ -100,7 +100,7 @@ details summary { cursor: pointer; color: var(--text-secondary); margin-top: 10p
 <div class="viz-root">
 <div class="wrap">
   <header>
-    <h1>agentreceipt</h1>
+    <h1>tokenreceipt</h1>
     <span class="range" id="range"></span>
     <span id="badge"></span>
     <span class="spacer"></span>
@@ -131,7 +131,7 @@ details summary { cursor: pointer; color: var(--text-secondary); margin-top: 10p
     <button id="download" type="button">Download PNG</button>
   </section>
 
-  <p class="foot">Costs are API-equivalent: Anthropic list prices, plus the LiteLLM price table for other models. On a subscription plan you are not billed this amount. Generated locally by <b>agentreceipt</b>; no usage data left your machine.</p>
+  <p class="foot">Costs are API-equivalent: Anthropic list prices, plus the LiteLLM price table for other models. On a subscription plan you are not billed this amount. Generated locally by <b>tokenreceipt</b>; no usage data left your machine.</p>
 </div>
 <div class="tip" id="tip"></div>
 </div>
@@ -352,7 +352,7 @@ function shareSvg() {
     text(72, 400, usd(T.avoidable) + " of it was avoidable.", 36, warn, 700);
     text(72, 440, "Expired prompt caches, rebuilt at full price.", 24, mute, 400);
   }
-  text(72, 560, "npx agentreceipt", 34, fg, 700, "start", mono);
+  text(72, 560, "npx tokenreceipt", 34, fg, 700, "start", mono);
 
   // right: the receipt, with torn zigzag edges
   const rx = 690, rw = 450, top = 28, bottom = 602, tooth = 15;
@@ -375,7 +375,7 @@ function shareSvg() {
     text(R2, y, value, size, o.color || ink, o.weight || 400, "end", mono);
     y += o.step || 33;
   };
-  text(cx, y, "AGENTRECEIPT", 28, ink, 700, "middle", mono); y += 32;
+  text(cx, y, "TOKENRECEIPT", 28, ink, 700, "middle", mono); y += 32;
   const crossYear = R.from && R.from.slice(0, 4) !== R.to.slice(0, 4);
   const range = R.from ? fmtDay(R.from, crossYear ? { month: "short", day: "numeric", year: "numeric" } : undefined) + " – " + fmtDay(R.to, { month: "short", day: "numeric", year: "numeric" }) : "";
   text(cx, y, range + (R.demo ? " · DEMO" : ""), 18, inkMute, 400, "middle", mono); y += 40;
@@ -409,7 +409,7 @@ $("download").onclick = () => {
   img.onload = () => {
     const c = document.createElement("canvas"); c.width = 1200; c.height = 630;
     c.getContext("2d").drawImage(img, 0, 0);
-    const a = document.createElement("a"); a.download = "agentreceipt.png"; a.href = c.toDataURL("image/png"); a.click();
+    const a = document.createElement("a"); a.download = "tokenreceipt.png"; a.href = c.toDataURL("image/png"); a.click();
   };
   img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(xml);
 };

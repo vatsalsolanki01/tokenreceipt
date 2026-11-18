@@ -1,4 +1,4 @@
-// Renders `agentreceipt --demo` into an animated terminal SVG for the README (docs/demo.svg).
+// Renders `tokenreceipt --demo` into an animated terminal SVG for the README (docs/demo.svg).
 // Usage: npm run build && node scripts/demo-svg.mjs
 import { spawnSync } from "node:child_process";
 import { writeFileSync } from "node:fs";
@@ -68,7 +68,7 @@ const rows = lines.flatMap((l) => wrap(segments(l)));
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const FONT = 14, LH = 20, CW = 8.43, PAD = 24, TOP = 52;
-const CMD = "npx agentreceipt --demo";
+const CMD = "npx tokenreceipt --demo";
 const W = Math.ceil(PAD * 2 + COLS * CW);
 const H = TOP + (rows.length + 2) * LH + PAD;
 
@@ -101,7 +101,7 @@ rows.forEach((segs, i) => {
   body += `<text x="${PAD}" y="${TOP + (i + 1) * LH}" class="t l${i}" xml:space="preserve">${tspans}</text>`;
 });
 
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="agentreceipt --demo terminal output">
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="tokenreceipt --demo terminal output">
 <style>
 .t{font:${FONT}px ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;fill:#e6edf3;white-space:pre}
 ${css}</style>

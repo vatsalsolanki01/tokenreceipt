@@ -1,17 +1,17 @@
 {
-  "name": "agentreceipt",
+  "name": "tokenreceipt",
   "version": "0.1.0",
   "description": "See what your AI coding agents really cost, and how much you wasted. One command, 100% local: Claude Code, Codex CLI and Gemini CLI spend by day, model and project.",
   "type": "module",
   "bin": {
-    "agentreceipt": "dist/src/cli.js"
+    "tokenreceipt": "dist/src/cli.js"
   },
   "files": [
     "dist/src"
   ],
   "scripts": {
     "build": "tsc -p .",
-    "test": "tsc -p . && node --test dist/test/agentreceipt.test.js",
+    "test": "tsc -p . && node --test dist/test/tokenreceipt.test.js",
     "start": "node dist/src/cli.js",
     "demo": "node dist/src/cli.js --demo",
     "prepublishOnly": "npm test",
@@ -45,11 +45,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vatsalsolanki01/agentreceipt.git"
+    "url": "git+https://github.com/vatsalsolanki01/tokenreceipt.git"
   },
-  "homepage": "https://github.com/vatsalsolanki01/agentreceipt#readme",
+  "homepage": "https://github.com/vatsalsolanki01/tokenreceipt#readme",
   "bugs": {
-    "url": "https://github.com/vatsalsolanki01/agentreceipt/issues"
+    "url": "https://github.com/vatsalsolanki01/tokenreceipt/issues"
   },
   "license": "MIT",
   "devDependencies": {

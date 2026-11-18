@@ -1,13 +1,13 @@
 <div align="center">
 
-# agentreceipt
+# tokenreceipt
 
 **The receipt for your AI coding agents, including the part you wasted.**
 See what Claude Code, Codex CLI and Gemini CLI actually cost you, where the money went, and how much of it was avoidable.
 
-[![npm version](https://img.shields.io/npm/v/agentreceipt?color=cb3837)](https://www.npmjs.com/package/agentreceipt)
-[![CI](https://github.com/vatsalsolanki01/agentreceipt/actions/workflows/ci.yml/badge.svg)](https://github.com/vatsalsolanki01/agentreceipt/actions/workflows/ci.yml)
-[![npm downloads](https://img.shields.io/npm/dm/agentreceipt)](https://www.npmjs.com/package/agentreceipt)
+[![npm version](https://img.shields.io/npm/v/tokenreceipt?color=cb3837)](https://www.npmjs.com/package/tokenreceipt)
+[![CI](https://github.com/vatsalsolanki01/tokenreceipt/actions/workflows/ci.yml/badge.svg)](https://github.com/vatsalsolanki01/tokenreceipt/actions/workflows/ci.yml)
+[![npm downloads](https://img.shields.io/npm/dm/tokenreceipt)](https://www.npmjs.com/package/tokenreceipt)
 ![zero dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
 ![100% local](https://img.shields.io/badge/data-100%25%20local-blue)
 [![license MIT](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
@@ -15,10 +15,10 @@ See what Claude Code, Codex CLI and Gemini CLI actually cost you, where the mone
 One command · 100% local · zero dependencies · no API keys
 
 ```bash
-npx agentreceipt
+npx tokenreceipt
 ```
 
-<img alt="agentreceipt --demo in a terminal: total spend, spend by agent and model, and insights such as $52.49 re-paid rebuilding expired caches" src="docs/demo.svg" width="860">
+<img alt="tokenreceipt --demo in a terminal: total spend, spend by agent and model, and insights such as $52.49 re-paid rebuilding expired caches" src="docs/demo.svg" width="860">
 
 <img alt="Shareable receipt card: My AI coding agents cost $429.78, $52.49 of it was avoidable" src="docs/share-card.png" width="600">
 
@@ -27,12 +27,12 @@ npx agentreceipt
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/dashboard-dark.png">
-  <img alt="agentreceipt dashboard: total spend, daily spend by agent, spend by model and project" src="docs/dashboard-light.png">
+  <img alt="tokenreceipt dashboard: total spend, daily spend by agent, spend by model and project" src="docs/dashboard-light.png">
 </picture>
 
 </details>
 
-If agentreceipt found money you can save, a ⭐ helps other people find it too.
+If tokenreceipt found money you can save, a ⭐ helps other people find it too.
 
 </div>
 
@@ -65,14 +65,14 @@ For many developers, coding agents have become a big AI expense, and the least v
 - On the **API**, the invoice says *how much* but not *why*: which project, which session, which model.
 - A large share of agent spend is **avoidable**: prompt caches that expire while you're at lunch, sessions that drag 300K tokens of history into every turn.
 
-Every one of these agents already writes detailed usage logs to your disk. **agentreceipt reads them and gives you the receipt.**
+Every one of these agents already writes detailed usage logs to your disk. **tokenreceipt reads them and gives you the receipt.**
 
 ## Quick start
 
 ```bash
-npx agentreceipt            # summary in your terminal
-npx agentreceipt --html     # interactive dashboard in your browser
-npx agentreceipt --demo     # no logs yet? try it with realistic fake data
+npx tokenreceipt            # summary in your terminal
+npx tokenreceipt --html     # interactive dashboard in your browser
+npx tokenreceipt --demo     # no logs yet? try it with realistic fake data
 ```
 
 Requirements: **Node.js 18.17+** on macOS, Linux or Windows. There's nothing to configure: it finds the logs in their default locations.
@@ -80,18 +80,18 @@ Requirements: **Node.js 18.17+** on macOS, Linux or Windows. There's nothing to 
 Prefer a permanent install?
 
 ```bash
-npm install -g agentreceipt
-agentreceipt --days 7
+npm install -g tokenreceipt
+tokenreceipt --days 7
 ```
 
-Updating: `npx agentreceipt@latest` always runs the newest version; for a global install, run `npm install -g agentreceipt@latest`. Uninstall with `npm uninstall -g agentreceipt`.
+Updating: `npx tokenreceipt@latest` always runs the newest version; for a global install, run `npm install -g tokenreceipt@latest`. Uninstall with `npm uninstall -g tokenreceipt`.
 
 ## What you get
 
 ### Terminal summary
 
 ```
-  agentreceipt · what your AI coding agents cost (API-equivalent) [DEMO DATA]
+  tokenreceipt · what your AI coding agents cost (API-equivalent) [DEMO DATA]
   Oct 20, 2026 – Nov 18, 2026 · 24 active days · 79 sessions · 6,034 requests
 
   $429.78 total    $17.91 per active day    735.2M tokens
@@ -154,7 +154,7 @@ A single self-contained HTML file. It works offline, loads nothing from the inte
 ### Drill-down tables (`--by`)
 
 ```
-$ npx agentreceipt --by session
+$ npx tokenreceipt --by session
   started     agent        project       main model         requests    cost
   2026-10-19  Claude Code  docs-site     claude-opus-5-5         136  $17.22
   2026-10-12  Claude Code  ml-pipeline   claude-opus-5-5         142  $17.18
@@ -182,12 +182,12 @@ Views: `day`, `model`, `project`, `session` (top 50), `agent`.
 | `-h`, `--help` / `-v`, `--version` | Help / version |
 
 ```bash
-npx agentreceipt --days 7                          # this week
-npx agentreceipt --since 2026-10-01 --until 2026-10-31 --by project
-npx agentreceipt --agent claude --by model         # Claude Code only, per model
-npx agentreceipt --html report.html --no-open      # write a dashboard file
-npx agentreceipt --html --redact                   # safe to screenshot and share
-npx agentreceipt --json | jq '.totals.cost'        # scripting
+npx tokenreceipt --days 7                          # this week
+npx tokenreceipt --since 2026-10-01 --until 2026-10-31 --by project
+npx tokenreceipt --agent claude --by model         # Claude Code only, per model
+npx tokenreceipt --html report.html --no-open      # write a dashboard file
+npx tokenreceipt --html --redact                   # safe to screenshot and share
+npx tokenreceipt --json | jq '.totals.cost'        # scripting
 ```
 
 ## Insights explained
@@ -207,7 +207,7 @@ npx agentreceipt --json | jq '.totals.cost'        # scripting
 
 ## Supported agents
 
-| Agent | Where agentreceipt looks | What it reads |
+| Agent | Where tokenreceipt looks | What it reads |
 |---|---|---|
 | **Claude Code** | `~/.claude/projects/**`, `~/.config/claude/projects/**`, and every folder in `CLAUDE_CONFIG_DIR` (comma-separated) | Per-response `usage`: input, output, cache reads, 5-minute and 1-hour cache writes, fast mode, web searches, inference geography, subagents |
 | **Codex CLI** | `~/.codex/sessions/**` and `~/.codex/archived_sessions/**` (or `CODEX_HOME`) | `token_count` events (cumulative totals, turned into per-request costs), model and working directory |
@@ -217,7 +217,7 @@ Not yet supported: Cursor (it keeps usage in its own database and on its servers
 
 On Windows, `~` means your user folder, e.g. `C:\Users\you\.claude\projects`.
 
-**Projects:** a session is attributed to the folder it **started** in, even if the agent later `cd`s into subfolders. Gemini CLI only stores a hash of the folder; agentreceipt recovers the name when the same folder appears in your Claude Code or Codex logs, and otherwise shows `gemini:<hash>`.
+**Projects:** a session is attributed to the folder it **started** in, even if the agent later `cd`s into subfolders. Gemini CLI only stores a hash of the folder; tokenreceipt recovers the name when the same folder appears in your Claude Code or Codex logs, and otherwise shows `gemini:<hash>`.
 
 ## How it works
 
@@ -245,7 +245,7 @@ On Windows, `~` means your user folder, e.g. `C:\Users\you\.claude\projects`.
 | **Cache write** | Input stored in the prompt cache so later requests can read it. Costs more than normal input (1.25× for 5 minutes, 2× for 1 hour). |
 | **API-equivalent cost** | What these tokens cost at public list prices. Not what a subscription charges you. |
 | **Active day** | A calendar day (your local time zone) with at least one request. |
-| **Avoidable** | Spend agentreceipt can attribute to a fixable pattern. Currently: rebuilding prompt caches that expired. |
+| **Avoidable** | Spend tokenreceipt can attribute to a fixable pattern. Currently: rebuilding prompt caches that expired. |
 
 ## How costs are calculated
 
@@ -274,7 +274,7 @@ cost = input × input_price
 | Claude Haiku 5.5 (prompt ≤100K / >100K) | $0.10 / $0.50 | $0.50 / $2.50 | $0.01 / $0.05 |
 | Claude Haiku 4.5 | $1 | $5 | $0.10 |
 
-Older models (Opus 4/4.1, Haiku 3.5, Claude 3.x) are included too. Pricing modifiers that agentreceipt applies:
+Older models (Opus 4/4.1, Haiku 3.5, Claude 3.x) are included too. Pricing modifiers that tokenreceipt applies:
 
 - **Fast mode**: 2× on Opus 5.5, Opus 5 and Opus 4.8.
 - **US-only inference** (`inference_geo: "us"`): 1.1× on Claude 4.6 and later.
@@ -285,23 +285,23 @@ Older models (Opus 4/4.1, Haiku 3.5, Claude 3.x) are included too. Pricing modif
 
 ## Accuracy and known limitations
 
-Costs are **API-equivalent**: what the same tokens cost at public list prices. Things agentreceipt handles that naive log-summing gets wrong:
+Costs are **API-equivalent**: what the same tokens cost at public list prices. Things tokenreceipt handles that naive log-summing gets wrong:
 
-- **Claude Code logs one line per content block**, and every line repeats the same usage. agentreceipt counts each response once, keyed by message and request ID, and keeps the most complete copy. Naive summing over-counts by 2–3×.
+- **Claude Code logs one line per content block**, and every line repeats the same usage. tokenreceipt counts each response once, keyed by message and request ID, and keeps the most complete copy. Naive summing over-counts by 2–3×.
 - **The same session in two config folders** (e.g. `~/.claude` and a `CLAUDE_CONFIG_DIR` copy) is counted once.
 - **Codex totals are cumulative**, so each request is costed from the difference, and repeated events are ignored.
 - **Cache pricing**: separate 5-minute and 1-hour write prices, and model-specific read prices (0.1× input on most models, 0.05× on Opus 5.5 and Sonnet 5.5, 0.025× on Fable 5.1).
 
 Known limitations, stated plainly:
 
-- **Background calls Claude Code doesn't log.** Claude Code makes some small API calls (session titles, "while you were away" recaps) whose usage isn't written to the message logs, so agentreceipt can't see them. On short sessions this can mean reading 5–20% low.
-- **Claude Code's internal per-session counter can differ**, in both directions. Compared with it on the author's machine, most sessions matched closely, but individual sessions differed by up to ±20%. The internal counter isn't always updated when a session ends, and sometimes counts more than the logs contain. agentreceipt reports exactly what the logs contain, priced at official rates.
+- **Background calls Claude Code doesn't log.** Claude Code makes some small API calls (session titles, "while you were away" recaps) whose usage isn't written to the message logs, so tokenreceipt can't see them. On short sessions this can mean reading 5–20% low.
+- **Claude Code's internal per-session counter can differ**, in both directions. Compared with it on the author's machine, most sessions matched closely, but individual sessions differed by up to ±20%. The internal counter isn't always updated when a session ends, and sometimes counts more than the logs contain. tokenreceipt reports exactly what the logs contain, priced at official rates.
 - **Discounts aren't modelled**: Batch API, negotiated enterprise pricing, free credits, Bedrock/Vertex regional pricing.
 - **Log formats change.** Agents update their log formats without notice. If your numbers look wrong, please [open an issue](../../issues/new?template=wrong-numbers.md).
 
 ## Privacy
 
-- **Your logs never leave your machine.** agentreceipt reads them locally and writes output only to your terminal or to the HTML file you ask for.
+- **Your logs never leave your machine.** tokenreceipt reads them locally and writes output only to your terminal or to the HTML file you ask for.
 - **No telemetry, no accounts, no API keys.**
 - **The only network request** downloads the public LiteLLM price list. It happens only when your logs contain non-Claude models, at most once a day; the list is cached under your OS cache folder. `--offline` disables it completely.
 - **Zero runtime dependencies**: the published package is a ~30 kB download of plain, readable JavaScript.
@@ -346,12 +346,12 @@ All money values are USD, token values are raw counts and timestamps are epoch m
 | `CODEX_HOME` | Codex CLI home folder (default `~/.codex`). |
 | `NO_COLOR` | Disable colored output. |
 | `XDG_CACHE_HOME` | Where the price-table cache goes (see below). |
-| `AGENTRECEIPT_DEBUG=1` | Print every log file that was skipped, and why, to stderr. |
+| `TOKENRECEIPT_DEBUG=1` | Print every log file that was skipped, and why, to stderr. |
 
-**Files agentreceipt writes:**
+**Files tokenreceipt writes:**
 
-- The **dashboard**, only with `--html`: the path you give, or `<OS temp folder>/agentreceipt/agentreceipt-report.html`.
-- The **price-table cache**, only when non-Claude models are present and `--offline` isn't set: `$XDG_CACHE_HOME/agentreceipt/` if that's set; otherwise `%LOCALAPPDATA%\agentreceipt\` on Windows and `~/.cache/agentreceipt/` elsewhere. Delete it any time.
+- The **dashboard**, only with `--html`: the path you give, or `<OS temp folder>/tokenreceipt/tokenreceipt-report.html`.
+- The **price-table cache**, only when non-Claude models are present and `--offline` isn't set: `$XDG_CACHE_HOME/tokenreceipt/` if that's set; otherwise `%LOCALAPPDATA%\tokenreceipt\` on Windows and `~/.cache/tokenreceipt/` elsewhere. Delete it any time.
 
 It never modifies, moves or deletes agent logs.
 
@@ -365,10 +365,10 @@ It never modifies, moves or deletes agent logs.
 ## FAQ
 
 **I'm on Claude Max / ChatGPT Pro. Is this what I pay?**
-No. You pay your subscription. agentreceipt shows what the same usage would cost on the API: a measure of the value you're getting, and of which habits use up your limits fastest.
+No. You pay your subscription. tokenreceipt shows what the same usage would cost on the API: a measure of the value you're getting, and of which habits use up your limits fastest.
 
 **Why doesn't it match Claude Code's `/cost`?**
-`/cost` covers the current session and includes a few background calls that aren't in the logs. agentreceipt covers everything on disk. See [Accuracy](#accuracy-and-known-limitations).
+`/cost` covers the current session and includes a few background calls that aren't in the logs. tokenreceipt covers everything on disk. See [Accuracy](#accuracy-and-known-limitations).
 
 **I use several Claude accounts / config folders.**
 Set `CLAUDE_CONFIG_DIR` to a comma-separated list. `~/.claude` and `~/.config/claude` are always included, and duplicates are removed.
@@ -389,9 +389,9 @@ It's an estimate of one specific, fixable pattern (expired-cache rebuilds). Real
 | "No agent usage found" | Check that the folders in [Supported agents](#supported-agents) exist and contain recent files. Custom location? Set `CLAUDE_CONFIG_DIR` or `CODEX_HOME`. Filtering by date? Widen `--days`/`--since`. |
 | Dashboard didn't open | The file path is printed. Open it manually, or pass `--html my-report.html`. |
 | Weird characters in the terminal | Use a UTF-8 terminal (Windows Terminal, iTerm2, any modern Linux terminal), or add `--no-color`. |
-| A log file seems to be ignored | Unreadable, locked or corrupt files are skipped so one bad file can't break the report. Set `AGENTRECEIPT_DEBUG=1` to print which files were skipped and why. |
+| A log file seems to be ignored | Unreadable, locked or corrupt files are skipped so one bad file can't break the report. Set `TOKENRECEIPT_DEBUG=1` to print which files were skipped and why. |
 | `--json` output is empty | With no matching usage, `--json` prints an empty report (all zeros), so scripts don't break. Check your date filters. |
-| Numbers look wrong | Run `npx agentreceipt --by model --redact` and [open an issue](../../issues/new?template=wrong-numbers.md) with the output. Please don't attach raw logs: they contain your code and prompts. |
+| Numbers look wrong | Run `npx tokenreceipt --by model --redact` and [open an issue](../../issues/new?template=wrong-numbers.md) with the output. Please don't attach raw logs: they contain your code and prompts. |
 
 ## Roadmap
 
@@ -409,7 +409,7 @@ Have an idea? [Open an issue](../../issues/new).
 Adding an agent means one parser file that returns normalized usage records. [CONTRIBUTING.md](CONTRIBUTING.md) walks through it.
 
 ```bash
-git clone https://github.com/vatsalsolanki01/agentreceipt.git && cd agentreceipt
+git clone https://github.com/vatsalsolanki01/tokenreceipt.git && cd tokenreceipt
 npm install
 npm test                         # type-check + unit and end-to-end tests
 node dist/src/cli.js --demo      # run your build

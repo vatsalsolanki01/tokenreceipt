@@ -1,7 +1,7 @@
 node_modules/
 dist/
 *.log
-agentreceipt-report.html
+tokenreceipt-report.html
 
 # private launch notes, kept local
 PLAN.md

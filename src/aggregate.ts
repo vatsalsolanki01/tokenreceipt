@@ -338,7 +338,7 @@ export function buildReport(
       title: `No price found for ${unpricedModels.length} model(s)`,
       detail: `${unpricedModels.join(", ")}: tokens are counted but cost shows as $0.`,
       cost: 0,
-      tip: "Run once with network access so agentreceipt can fetch the LiteLLM price table.",
+      tip: "Run once with network access so tokenreceipt can fetch the LiteLLM price table.",
     });
   }
 

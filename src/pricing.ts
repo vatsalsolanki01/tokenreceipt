@@ -107,7 +107,7 @@ function cacheFile(): string {
     (process.platform === "win32" && process.env.LOCALAPPDATA
       ? process.env.LOCALAPPDATA
       : path.join(os.homedir(), ".cache"));
-  return path.join(base, "agentreceipt", "litellm-prices.json");
+  return path.join(base, "tokenreceipt", "litellm-prices.json");
 }
 
 /**

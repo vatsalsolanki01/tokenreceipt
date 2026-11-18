@@ -85,7 +85,7 @@ export function renderSummary(r: Report): string {
   const out: string[] = [];
   const tag = r.demo ? yellow(" [DEMO DATA]") : r.redacted ? dim(" [redacted]") : "";
   out.push("");
-  out.push(`  ${bold("agentreceipt")} ${dim("· what your AI coding agents cost (API-equivalent)")}${tag}`);
+  out.push(`  ${bold("tokenreceipt")} ${dim("· what your AI coding agents cost (API-equivalent)")}${tag}`);
   out.push(
     `  ${dim(`${fmtDate(r.from)} – ${fmtDate(r.to)} · ${plural(t.activeDays, "active day")} · ${plural(t.sessions, "session")} · ${plural(t.requests, "request")}`)}`,
   );
@@ -140,13 +140,13 @@ export function renderSummary(r: Report): string {
       "  Prices: Anthropic list prices + LiteLLM table. On a subscription you are not billed this; it is what the same usage costs on the API.",
     ),
   );
-  out.push(`  ${dim("Next:")} agentreceipt --html ${dim("(dashboard)")} · --by session|project|model|day · --redact ${dim("(hide names for screenshots)")}`);
+  out.push(`  ${dim("Next:")} tokenreceipt --html ${dim("(dashboard)")} · --by session|project|model|day · --redact ${dim("(hide names for screenshots)")}`);
   out.push("");
   return out.join("\n");
 }
 
 export function renderBy(r: Report, by: "day" | "model" | "project" | "session" | "agent"): string {
-  const head = `\n  ${bold("agentreceipt")} ${dim(`· by ${by} · ${fmtDate(r.from)} – ${fmtDate(r.to)} · total ${usd(r.totals.cost)}`)}\n`;
+  const head = `\n  ${bold("tokenreceipt")} ${dim(`· by ${by} · ${fmtDate(r.from)} – ${fmtDate(r.to)} · total ${usd(r.totals.cost)}`)}\n`;
   switch (by) {
     case "day":
       return head + bucketTable([...r.byDay].reverse().filter((d) => d.requests > 0), "day", 10_000) + "\n";

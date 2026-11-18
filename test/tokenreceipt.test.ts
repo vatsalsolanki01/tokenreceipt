@@ -17,7 +17,7 @@ import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 async function tmp(): Promise<string> {
-  return fs.mkdtemp(path.join(os.tmpdir(), "agentreceipt-test-"));
+  return fs.mkdtemp(path.join(os.tmpdir(), "tokenreceipt-test-"));
 }
 
 async function write(file: string, lines: unknown[]): Promise<void> {
@@ -317,7 +317,7 @@ test("cli: end-to-end runs of the built binary", async () => {
   for (const by of ["day", "model", "project", "session", "agent"]) {
     const r = run("--demo", "--by", by, "--no-color");
     assert.equal(r.status, 0, `${by}: ${r.stderr}`);
-    assert.ok(r.stdout.includes("agentreceipt"));
+    assert.ok(r.stdout.includes("tokenreceipt"));
   }
 
   const file = path.join(await tmp(), "r.html");
