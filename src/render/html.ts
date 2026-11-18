@@ -336,9 +336,10 @@ function shareSvg() {
   const s = svgEl("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, xmlns: SVGNS });
   const sans = "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif";
   const mono = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+  let layer = s;
   const text = (x, y, str, size, color, weight, anchor, family) => {
     const t = svgEl("text", { x, y, fill: color, "font-size": size, "font-weight": weight || 400, "font-family": family || sans, "text-anchor": anchor || "start" });
-    t.textContent = str; s.append(t); return t;
+    t.textContent = str; layer.append(t); return t;
   };
   s.append(svgEl("rect", { width: W, height: H, fill: bg }));
 
@@ -354,19 +355,14 @@ function shareSvg() {
   }
   text(72, 560, "npx tokenreceipt", 34, fg, 700, "start", mono);
 
-  // right: the receipt, with torn zigzag edges
-  const rx = 690, rw = 450, top = 28, bottom = 602, tooth = 15;
-  let d = "M" + rx + "," + (top + 8);
-  for (let x = rx; x < rx + rw; x += tooth) d += "L" + (x + tooth / 2) + "," + top + "L" + Math.min(x + tooth, rx + rw) + "," + (top + 8);
-  d += "L" + (rx + rw) + "," + (bottom - 8);
-  for (let x = rx + rw; x > rx; x -= tooth) d += "L" + (x - tooth / 2) + "," + bottom + "L" + Math.max(x - tooth, rx) + "," + (bottom - 8);
-  d += "Z";
-  s.append(svgEl("path", { d, fill: "#000", opacity: dark ? 0.5 : 0.12, transform: "translate(0,6)" }));
-  s.append(svgEl("path", { d, fill: paper }));
+  // right: the receipt, with torn zigzag edges; it is as tall as its content, centred vertically
+  const rx = 690, rw = 450, top = 28, tooth = 15;
+  const receipt = svgEl("g", {}), paperLayer = svgEl("g", {});
+  receipt.append(paperLayer); s.append(receipt); layer = receipt;
 
   const L = rx + 34, R2 = rx + rw - 34, cx = rx + rw / 2;
   let y = 82;
-  const rule = () => { s.append(svgEl("line", { x1: L, x2: R2, y1: y - 12, y2: y - 12, stroke: inkMute, "stroke-dasharray": "5 5", "stroke-width": 1.5 })); y += 18; };
+  const rule = () => { layer.append(svgEl("line", { x1: L, x2: R2, y1: y - 12, y2: y - 12, stroke: inkMute, "stroke-dasharray": "5 5", "stroke-width": 1.5 })); y += 18; };
   const row = (label, value, opts) => {
     const o = opts || {};
     const size = o.size || 21;
@@ -392,11 +388,19 @@ function shareSvg() {
   let bx = L, i = 0;
   while (bx < R2 - 4) {
     const w = 2 + (seed.charCodeAt(i % seed.length) + i * 7) % 4;
-    if (i % 2 === 0) s.append(svgEl("rect", { x: bx, y: y - 16, width: w, height: 46, fill: ink }));
+    if (i % 2 === 0) layer.append(svgEl("rect", { x: bx, y: y - 16, width: w, height: 46, fill: ink }));
     bx += w + 1 + (i * 3 + seed.length) % 3; i++;
   }
   y += 62;
   text(cx, y, "THANK YOU FOR YOUR TOKENS", 16, inkMute, 400, "middle", mono);
+  const bottom = y + 34;
+  let d = "M" + rx + "," + (top + 8);
+  for (let x = rx; x < rx + rw; x += tooth) d += "L" + (x + tooth / 2) + "," + top + "L" + Math.min(x + tooth, rx + rw) + "," + (top + 8);
+  d += "L" + (rx + rw) + "," + (bottom - 8);
+  for (let x = rx + rw; x > rx; x -= tooth) d += "L" + (x - tooth / 2) + "," + bottom + "L" + Math.max(x - tooth, rx) + "," + (bottom - 8);
+  d += "Z";
+  paperLayer.append(svgEl("path", { d, fill: "#000", opacity: dark ? 0.5 : 0.12, transform: "translate(0,6)" }), svgEl("path", { d, fill: paper }));
+  receipt.setAttribute("transform", "translate(0," + Math.max(0, Math.round((H - (bottom - top)) / 2 - top)) + ")");
   return s;
 }
 
