@@ -14,7 +14,7 @@ import { loadCodex } from "./sources/codex.js";
 import { loadGemini } from "./sources/gemini.js";
 import type { UsageRecord } from "./types.js";
 
-const VERSION = "0.1.0";
+const VERSION = "0.1.1";
 
 const HELP = `tokenreceipt: see what your AI coding agents really cost. 100% local.
 

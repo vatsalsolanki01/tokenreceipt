@@ -375,3 +375,10 @@ test("cli: --json stays valid JSON when nothing matches", () => {
   assert.equal(rep.totals.cost, 0);
   assert.deepEqual(rep.byDay, []);
 });
+
+test("cli: --version matches package.json", async () => {
+  const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+  const pkg = JSON.parse(await fs.readFile(path.join(root, "package.json"), "utf8"));
+  const out = spawnSync(process.execPath, [path.join(root, "dist/src/cli.js"), "--version"], { encoding: "utf8" });
+  assert.equal(out.stdout.trim(), pkg.version);
+});

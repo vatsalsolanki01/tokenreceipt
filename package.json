@@ -1,6 +1,6 @@
 {
   "name": "tokenreceipt",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "See what your AI coding agents really cost, and how much you wasted. One command, 100% local: Claude Code, Codex CLI and Gemini CLI spend by day, model and project.",
   "type": "module",
   "bin": {
