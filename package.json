@@ -1,0 +1,51 @@
+{
+  "name": "agentreceipt",
+  "version": "0.1.0",
+  "description": "See what your AI coding agents really cost, and how much you wasted. One command, 100% local: Claude Code, Codex CLI and Gemini CLI spend by day, model and project.",
+  "type": "module",
+  "bin": {
+    "agentreceipt": "dist/src/cli.js"
+  },
+  "files": [
+    "dist/src"
+  ],
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "tsc -p . && node --test dist/test/agentreceipt.test.js",
+    "start": "node dist/src/cli.js",
+    "demo": "node dist/src/cli.js --demo",
+    "prepublishOnly": "npm test",
+    "demo:svg": "npm run build && node scripts/demo-svg.mjs"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "keywords": [
+    "claude-code",
+    "claude",
+    "anthropic",
+    "codex",
+    "codex-cli",
+    "openai",
+    "gemini-cli",
+    "gemini",
+    "ai-agents",
+    "coding-agents",
+    "ai-coding",
+    "llm",
+    "llm-cost",
+    "token-usage",
+    "tokens",
+    "cost-tracking",
+    "usage",
+    "prompt-caching",
+    "finops",
+    "cli",
+    "developer-tools"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.4.0"
+  }
+}
