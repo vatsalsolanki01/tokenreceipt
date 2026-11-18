@@ -43,6 +43,14 @@
     "cli",
     "developer-tools"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vatsalsolanki01/agentreceipt.git"
+  },
+  "homepage": "https://github.com/vatsalsolanki01/agentreceipt#readme",
+  "bugs": {
+    "url": "https://github.com/vatsalsolanki01/agentreceipt/issues"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.11.0",

@@ -6,6 +6,7 @@
 See what Claude Code, Codex CLI and Gemini CLI actually cost you, where the money went, and how much of it was avoidable.
 
 [![npm version](https://img.shields.io/npm/v/agentreceipt?color=cb3837)](https://www.npmjs.com/package/agentreceipt)
+[![CI](https://github.com/vatsalsolanki01/agentreceipt/actions/workflows/ci.yml/badge.svg)](https://github.com/vatsalsolanki01/agentreceipt/actions/workflows/ci.yml)
 [![npm downloads](https://img.shields.io/npm/dm/agentreceipt)](https://www.npmjs.com/package/agentreceipt)
 ![zero dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
 ![100% local](https://img.shields.io/badge/data-100%25%20local-blue)
@@ -408,7 +409,7 @@ Have an idea? [Open an issue](../../issues/new).
 Adding an agent means one parser file that returns normalized usage records. [CONTRIBUTING.md](CONTRIBUTING.md) walks through it.
 
 ```bash
-git clone <this repo> && cd agentreceipt
+git clone https://github.com/vatsalsolanki01/agentreceipt.git && cd agentreceipt
 npm install
 npm test                         # type-check + unit and end-to-end tests
 node dist/src/cli.js --demo      # run your build
